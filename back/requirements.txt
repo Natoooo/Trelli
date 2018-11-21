@@ -1,0 +1,10 @@
+flask
+Flask-Migrate
+flask-marshmallow
+marshmallow-sqlalchemy
+flask-sqlalchemy
+Flask-Script
+python-dateutil
+flask-cors
+psycopg2
+psycopg2-binary

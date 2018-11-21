@@ -1,5 +1,7 @@
-body {
+#root {
+  background-color: #e6eeff;
   margin: 0px;
+  min-height: 100vh;
   padding: 0px;
 }
 
@@ -12,5 +14,21 @@ body {
 }
 
 .t-logo-personal {
-  width: 25px;
+  width: 38px;
+  background-color: transparent;
+}
+
+.t-block-last-viewed {
+  width: 250px;
+  height: 139px;
+  background-color: #343a40;
+}
+
+.t-block-board {
+  margin-right: 20px;
+  width: 250px;
+}
+
+.t-title-board {
+  margin-bottom: 80px;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Modal, Button, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import { connect } from "react-redux"
 import { createBoard} from "../actions/boardActions"
 
@@ -7,11 +8,13 @@ class Menu extends Component {
     super(props)
 
     this.state = {
-      title: ""
+      title: "",
+      image:""
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleChangeImage = this.handleChangeImage.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
   }
 
   handleChange(e) {
@@ -20,47 +23,47 @@ class Menu extends Component {
     })
   }
 
-  handleClick() {
-    const board = {
-      title: this.state.title
-    }
-
-    this.props.createBoard(board, null)
-
+  handleChangeImage(e) {
     this.setState({
-      title: ""
+      image: e.target.value
     })
   }
 
+
+  handleCreate() {
+    this.props.createBoard(this.state.title, this.state.image)
+  }
+
   render() {
-  //   <div className="container-fluid">
-  // <div className="row">
-  //   <div className="col-sm-6 col-sm-offset-3">
-  //     <form>
-  //       <div className="form-group">
-  //         <input
-  //           onChange={this.handleChange}
-  //           value={this.state.title}
-  //           type="text"
-  //           name="title"
-  //           className="form-control no-border"
-  //           placeholder="Title..."
-  //           required>
-  //         </input>
-  //       </div>
-  //
-  //       <div className="form-group">
-  //         <button onClick={this.handleClick} className="btn btn-primary">+ Create Boards</button>
-  //       </div>
-  //     </form>
 
     return (
       <div className="container mw-100">
         <div className="container text-center">
           <ul className="list-group">
             <li className="list-group-item list-group-item-action">Boards</li>
-            <li onClick={this.handleClick} className="list-group-item list-group-item-action">+ Create a new Board</li>
+            <li data-toggle="modal" data-target="#exampleModal" className="list-group-item list-group-item-action">+ Create a new Board</li>
           </ul>
+        </div>
+
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Create a Board</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <input className="form-control border-0 mb-2" type="text" placeholder="Enter the Board's Title..." value={this.state.title} onChange={this.handleChange}/>
+                <input className="form-control border-0" type="text" placeholder="Enter your url to add a background..." type="url" value={this.state.image} onChange={this.handleChangeImage}/>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary" onClick={this.handleCreate}>Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )

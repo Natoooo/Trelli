@@ -25,10 +25,17 @@
 }
 
 .t-block-board {
+  margin-bottom: 20px;
   margin-right: 20px;
   width: 250px;
 }
 
 .t-title-board {
-  margin-bottom: 80px;
+  z-index: 10;
+}
+
+.t-background-image {
+  height: 150px;
+  width: 100%;
+  z-index: 1;
 }

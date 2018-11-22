@@ -19,8 +19,9 @@ class Board extends Component {
       return (
         <div className="t-block-board d-inline-block" key={key}>
           <div className="container p-2 bg-dark text-light">
-            <h6 className="t-title-board">{board.title}</h6>
-            <p className="mb-0">{board.posted_at.substr(0, 10)}</p>
+            <h6 className="t-title-board d-inline-block">{board.title}</h6>
+            <p className="mb-0 d-inline-block float-right">{board.posted_at.substr(0, 10)}</p>
+            <img className="t-background-image" src={board.image}/>
           </div>
         </div>
       )})

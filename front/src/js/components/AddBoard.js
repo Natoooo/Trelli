@@ -1,9 +1,8 @@
 import React, { Component } from "react"
-import { Modal, Button, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import { connect } from "react-redux"
 import { createBoard} from "../actions/boardActions"
 
-class Menu extends Component {
+class AddBoard extends Component {
   constructor(props) {
     super(props)
 
@@ -12,12 +11,12 @@ class Menu extends Component {
       image:""
     }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChangeTitle = this.handleChangeTitle.bind(this)
     this.handleChangeImage = this.handleChangeImage.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
   }
 
-  handleChange(e) {
+  handleChangeTitle(e) {
     this.setState({
       title: e.target.value
     })
@@ -29,9 +28,13 @@ class Menu extends Component {
     })
   }
 
-
   handleCreate() {
     this.props.createBoard(this.state.title, this.state.image)
+
+    this.setState({
+      title: "",
+      image: ""
+    })
   }
 
   render() {
@@ -50,13 +53,15 @@ class Menu extends Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <div className="modal-body">
-                <input className="form-control border-0 mb-2" type="text" placeholder="Enter the Board's Title..." value={this.state.title} onChange={this.handleChange}/>
+                <input className="form-control border-0 mb-2" type="text" placeholder="Enter the Board's Title..." value={this.state.title} onChange={this.handleChangeTitle}/>
                 <input className="form-control border-0" type="text" placeholder="Enter your url to add a background..." type="url" value={this.state.image} onChange={this.handleChangeImage}/>
               </div>
+
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" onClick={this.handleCreate}>Save changes</button>
+                <button type="button" className="btn btn-primary" onClick={this.handleCreate} data-dismiss="modal" aria-label="Close">Save changes</button>
               </div>
             </div>
           </div>
@@ -72,4 +77,4 @@ const mapDispatchToProps = dispatch => {
   })
 }
 
-export default connect(null, mapDispatchToProps)(Menu)
+export default connect(null, mapDispatchToProps)(AddBoard)

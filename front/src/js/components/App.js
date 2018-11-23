@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import NavBar from "./NavBar"
-import Menu from "./Menu"
-import Board from "./Board"
+import AddBoard from "./AddBoard"
+import Boards from "./Boards"
 
 class App extends Component {
   render() {
@@ -10,10 +10,10 @@ class App extends Component {
         <NavBar />
         <div className="container mt-4">
           <div className="container mb-4">
-            <Menu />
+            <AddBoard />
           </div>
           <div className="container">
-            <Board />
+            <Boards />
           </div>
         </div>
       </React.Fragment>

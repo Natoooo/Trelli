@@ -7,6 +7,8 @@ import { fetchBoards, updateBoard, deleteBoard } from "../actions/boardActions"
 class Board extends Component {
   constructor(props) {
     super(props)
+
+    this.removeBoard = this.removeBoard.bind(this)
   }
 
   componentDidMount() {
@@ -14,36 +16,41 @@ class Board extends Component {
     this.props.fetchBoards()
   }
 
+  removeBoard(boardId) {
+    this.props.deleteBoard(boardId)
+  }
+
   render() {
-    let renderBoards = this.props.boards.map((board, key) => {
-      return (
-        <div className="t-block-board d-inline-block" key={key}>
-          <div className="container p-2 bg-dark text-light">
-            <h6 className="t-title-board d-inline-block">{board.title}</h6>
-            <p className="mb-0 d-inline-block float-right">{board.posted_at.substr(0, 10)}</p>
-            <img className="t-background-image" src={board.image}/>
+    return (
+      <div className="container">
+        <div className="row mb-4">
+          <div className="container p-0 mb-2">
+            <img alt="logo-time" className="t-logo-time mr-2 ml-1" src={pathTime} /><h5 className="d-inline">Recently Viewed</h5>
+          </div>
+          <div className="container p-0 mb-2">
+            <div className="t-block-last-viewed"><h5 className="t-title-board text-light p-2">Untitled Board</h5></div>
           </div>
         </div>
-      )})
 
-    return (
-      <div className="container mw-100 p-0">
-        <div className="container mw-100 p-0">
-          <div className="row">
-            <div className="container mb-2">
-              <img alt="logo-time" className="t-logo-time mr-2 ml-1" src={pathTime} /><h5 className="d-inline">Recently Viewed</h5>
-            </div>
+        <div className="row">
+          <div className="container p-0 mb-2">
+            <img alt="logo-personal" className="t-logo-personal" src={pathPersonal} /><h5 className="d-inline">Personal Boards</h5>
           </div>
-          <div className="container mw-100 p-0 mb-2">
-            <div className="t-block-last-viewed"><h6 className="t-title-board text-light p-2">Untitled Board</h6></div>
-          </div>
-          <div className="row">
-            <div className="container mb-2">
-              <img alt="logo-personal" className="t-logo-personal" src={pathPersonal} /><h5 className="d-inline">Personal Boards</h5>
-            </div>
-          </div>
-          <div className="container mw-100 p-0">
-            {renderBoards}
+          <div className="container p-0">
+            {this.props.boards.map((board, key) => {
+              return (
+                <div className="t-block-board d-inline-block position-relative" key={key}>
+                  <div className="position-absolute">
+                    <img className="t-background-image" src={board.image}/>
+                  </div>
+                  <div className="position-absolute">
+                    <h5 className="text-white d-inline-block p-2 font-weight-bold">{board.title}</h5>
+                  </div>
+                  <button className="close text-light p-2" onClick={ ()=> {this.removeBoard(board.id)}}>
+                    <span>&times;</span>
+                  </button>
+                </div>
+              )})}
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ export function deleteBoard(boardId) {
     db.deleteBoard(boardId)
     .then((b) => {
       console.log("GOT_DELETE_BOARD")
-      dispatch(boardRemoved(id))
+      dispatch(boardRemoved(boardId))
     })
     .catch((err) => {
       console.log(err, "GOT_ERROR_DELETE_BOARD")
@@ -63,7 +63,7 @@ export function addBoard(id, title, image) {
 export function createBoard(title, image) {
   return (dispatch) => {
     db.createBoard(title, image)
-    .then((b) => {
+    .then((board) => {
       console.log("GOT_CREATE_BOARD")
       dispatch(addBoard(board.id, board.title, board.image))
     })

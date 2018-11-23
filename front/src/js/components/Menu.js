@@ -35,14 +35,10 @@ class Menu extends Component {
   }
 
   render() {
-
     return (
       <div className="container mw-100">
         <div className="container text-center">
-          <ul className="list-group">
-            <li className="list-group-item list-group-item-action">Boards</li>
-            <li data-toggle="modal" data-target="#exampleModal" className="list-group-item list-group-item-action">+ Create a new Board</li>
-          </ul>
+          <button data-toggle="modal" data-target="#exampleModal" className="btn btn-primary">+ Add a Board</button>
         </div>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -14,28 +14,23 @@
 }
 
 .t-logo-personal {
-  width: 38px;
   background-color: transparent;
+  width: 38px;
 }
 
 .t-block-last-viewed {
-  width: 250px;
-  height: 139px;
   background-color: #343a40;
+  height: 139px;
+  width: 250px;
 }
 
 .t-block-board {
-  margin-bottom: 20px;
+  margin-bottom: 120px;
   margin-right: 20px;
   width: 250px;
-}
-
-.t-title-board {
-  z-index: 10;
 }
 
 .t-background-image {
   height: 150px;
   width: 100%;
-  z-index: 1;
 }

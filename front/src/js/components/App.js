@@ -9,13 +9,11 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <div className="container mt-4">
-          <div className="row">
-            <div className="container col-3">
-              <Menu />
-            </div>
-            <div className="container col-9">
-              <Board />
-            </div>
+          <div className="container mb-4">
+            <Menu />
+          </div>
+          <div className="container">
+            <Board />
           </div>
         </div>
       </React.Fragment>

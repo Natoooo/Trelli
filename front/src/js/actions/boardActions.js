@@ -22,7 +22,20 @@ export function fetchBoards() {
       dispatch(boardsReceived(boards))
     })
     .catch((err) => {
-      console.log(err, "GOT_ERROR_BOARD")
+      console.log(err, "GOT_ERROR_BOARDS")
+    })
+  }
+}
+
+export function fetchBoardById(boardId) {
+  return (dispatch) => {
+    db.fetchBoardById(boardId)
+    .then((boards) => {
+      console.log("GOT_BOARD_BY_ID")
+      dispatch(boardsReceived(boards))
+    })
+    .catch((err) => {
+      console.log(err, "GOT_ERROR_BOARD_BY_ID")
     })
   }
 }

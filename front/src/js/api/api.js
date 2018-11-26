@@ -27,6 +27,15 @@ class Api {
     .then(this._json)
   }
 
+  fetchBoardById(boardId) {
+    return fetch(this.baseUrl + "/boards/" + boardId , {
+      method: "GET",
+      headers: this.baseHeaders
+    })
+    .then(this._status)
+    .then(this._json)
+  }
+
   createBoard(title, image) {
     return fetch(this.baseUrl + "/boards", {
       method: "POST",

@@ -1,12 +1,16 @@
 import { createStore, applyMiddleware, compose } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
-import allReducers from "../reducers/index"
 import thunk from "redux-thunk"
+import { createHashHistory } from "history"
+import { routerMiddleware } from "connected-react-router"
+import createRootReducer from "../reducers/index"
+
+export const history = createHashHistory()
 
 export const store = createStore(
-  allReducers,
+  createRootReducer(history),
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, routerMiddleware(history)),
     composeWithDevTools()
   )
 )

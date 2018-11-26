@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { deleteBoard } from "../actions/boardActions"
+import { NavLink } from "react-router-dom"
 
 class Board extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Board extends Component {
 
   render() {
     return (
-      <div className="container p-0">
+      <div className="container p-0" onClick={this.handleClick}>
         {this.props.boards.map((board, key) => {
           if(board.image !== "") {
             return (
@@ -24,7 +25,7 @@ class Board extends Component {
                   <img className="t-background-image" src={board.image}/>
                 </div>
                 <div className="position-absolute">
-                  <h5 className="text-white d-inline-block p-2 font-weight-bold">{board.title}</h5>
+                  <NavLink to={"/dashBoard/" + board.id} activeStyle={{ color: "darkBlue" }}><h5 className="text-white d-inline-block p-2 font-weight-bold">{board.title}</h5></NavLink>
                 </div>
                 <button className="close text-light p-2" onClick={ ()=> {this.removeBoard(board.id)}}>
                   <span>&times;</span>
@@ -38,7 +39,7 @@ class Board extends Component {
                   <div className="t-block-board-default"></div>
                 </div>
                 <div className="position-absolute">
-                  <h5 className="text-white d-inline-block p-2 font-weight-bold">{board.title}</h5>
+                  <NavLink to={"/dashBoard/" + board.id} activeStyle={{ color: "darkBlue" }}><h5 className="text-white d-inline-block p-2 font-weight-bold">{board.title}</h5></NavLink>
                 </div>
                 <button className="close text-light p-2" onClick={ ()=> {this.removeBoard(board.id)}}>
                   <span>&times;</span>
@@ -46,6 +47,7 @@ class Board extends Component {
               </div>
             )
         }})}
+        {this.props.children}
       </div>
     )
   }

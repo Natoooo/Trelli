@@ -86,11 +86,11 @@ export function createBoard(title, image) {
   }
 }
 
-export function updatedBoard(boardId, title, image) {
+export function updatedBoard(id, title, image) {
   return {
     type: UPDATE_BOARD,
     payload: {
-      boardId,
+      id,
       title,
       image
     }
@@ -102,7 +102,7 @@ export function updateBoard(boardId, title, image) {
     db.updateBoard(boardId, title, image)
     .then((b) => {
       console.log("GOT_UPDATE_BOARD")
-      dispatch(updatedBoard(boardId, title, image))
+      dispatch(updatedBoard(b.id, b.title, b.image))
     })
     .catch((err) => {
       console.log(err, "GOT_ERROR_UPDATE_BOARD")

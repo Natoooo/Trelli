@@ -1,6 +1,6 @@
 import { BOARDS_RECEIVED, ADD_BOARD, DELETE_BOARD, UPDATE_BOARD } from "../actions/boardActions"
 
-export function boardReducer(state=[], action) {
+export function boardReducer(state = [], action) {
   switch(action.type) {
     case BOARDS_RECEIVED:
       return action.payload.boards

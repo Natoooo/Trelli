@@ -1,20 +1,9 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
 import pathTime from "../../styles/images/time.png"
 import pathPersonal from "../../styles/images/personal.png"
 import Board from "./Board"
-import { fetchBoards, updateBoard, deleteBoard } from "../actions/boardActions"
 
 class Boards extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    console.log("READ_BOARDS", this.props.fetchBoards)
-    this.props.fetchBoards()
-  }
-
   render() {
     return (
       <div className="container">
@@ -38,10 +27,4 @@ class Boards extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return ({
-    fetchBoards: () => { dispatch(fetchBoards()) }
-  })
-}
-
-export default connect(null, mapDispatchToProps)(Boards)
+export default Boards

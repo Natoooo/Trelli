@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { deleteBoard } from "../actions/boardActions"
+import { fetchBoards, deleteBoard } from "../actions/boardActions"
 import { NavLink } from "react-router-dom"
 
 class Board extends Component {
@@ -8,6 +8,11 @@ class Board extends Component {
     super(props)
 
     this.removeBoard = this.removeBoard.bind(this)
+  }
+
+  componentDidMount() {
+    console.log("READ_BOARDS", this.props.fetchBoards)
+    this.props.fetchBoards()
   }
 
   removeBoard(boardId) {
@@ -61,7 +66,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    deleteBoard: (boardId) => { dispatch(deleteBoard(boardId)) }
+    deleteBoard: (boardId) => { dispatch(deleteBoard(boardId)) },
+    fetchBoards: () => { dispatch(fetchBoards()) }
   })
 }
 

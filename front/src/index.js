@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./styles/style.css"
+import "./styles/app.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import $ from "jquery"
 import Popper from "popper.js"

@@ -1,0 +1,29 @@
+.t-dashboard-background {
+  background-color: grey;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+.t-dashboard-title {
+  background-color: black;
+  color: white;
+  display: inline;
+}
+
+.t-dashboard-inputs {
+  margin-top: 80px;
+}
+
+.t-dashboard-columns {
+  background-color: #dfe3e6;
+  border-radius: 2%;
+  margin: 20px;
+  text-align: center;
+}
+
+.list-group-item {
+  border-bottom: 1px solid grey;
+  border-radius: 2%;
+  cursor: pointer;
+}

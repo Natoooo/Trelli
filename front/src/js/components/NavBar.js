@@ -7,14 +7,11 @@ class NavBar extends Component {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <div className="nav navbar-nav d-inline">
-            <div className="d-inline pr-3"><a href="#" style={{fontSize: "16px", color: "white"}}>Home</a></div>
-            <div className="d-inline"><a href="#" style={{fontSize: "16px", color: "white"}}>Boards</a></div>
-          </div>
-
-          <div className="nav navbar-nav">
-            <a className="navbar-brand" href="#">
+            <a className="d-inline navbar-brand pr-3" href="#">
               <img alt="Brand" className="t-logo-nav" src= {path} />
             TRELLI</a>
+            <div className="d-inline pr-3"><a href="#" style={{fontSize: "16px", color: "white"}}>Home</a></div>
+            <div className="d-inline"><a href="#" style={{fontSize: "16px", color: "white"}}>Boards</a></div>
           </div>
 
           <ul className="nav navbar-nav navbar-right">

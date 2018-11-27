@@ -25,6 +25,7 @@ def create_board():
 def update_board(id):
     updt_board = Board.query.filter(Board.id == id).first_or_404()
     updt_board.title = request.json['title']
+    updt_board.image = request.json['image']
     db.session.commit()
     return board_schema.jsonify(updt_board)
 

@@ -8,6 +8,7 @@ class Board(db.Model):
     title = db.Column(db.Text, nullable=False)
     image = db.Column(db.Text, nullable=True)
     posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     items = db.relationship('Item')
 
 class BoardSchema(ma.ModelSchema):

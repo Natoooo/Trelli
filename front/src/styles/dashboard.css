@@ -18,6 +18,7 @@
 .t-dashboard-columns {
   background-color: #dfe3e6;
   border-radius: 2%;
+  display: inline-table;
   margin: 20px;
   text-align: center;
 }
@@ -26,4 +27,8 @@
   border-bottom: 1px solid grey;
   border-radius: 2%;
   cursor: pointer;
+}
+
+#draggablePanelList .panel-heading {
+  cursor: move;
 }

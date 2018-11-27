@@ -1,10 +1,12 @@
 from flask import request
 from trelli import app
 from trelli.models import *
+from trelli.api.authToken import auth
 from datetime import datetime
 import dateutil.parser
 
 @app.route("/items", methods=["GET"])
+@auth
 def list_item():
     q = Item.query.join(Board)
 
@@ -14,11 +16,13 @@ def list_item():
     return items_schema.jsonify(q.all())
 
 @app.route("/items/<id>", methods=["GET"])
+@auth
 def get_item(id):
 	item = Item.query.filter(Item.id == id).first_or_404()
 	return item_schema.jsonify(item)
 
 @app.route("/items", methods=["POST"])
+@auth
 def create_item():
     i = Item(**request.json)
     db.session.add(i)
@@ -26,6 +30,7 @@ def create_item():
     return item_schema.jsonify(i)
 
 @app.route("/items/<id>", methods=["PUT"])
+@auth
 def update_item(id):
     updt_item = Item.query.filter(Item.id == id).first_or_404()
     updt_item.title = request.json['title']
@@ -33,6 +38,7 @@ def update_item(id):
     return item_schema.jsonify(updt_item)
 
 @app.route("/items/<id>", methods=["DELETE"])
+@auth
 def delete_item(id):
 	it = Item.query.filter(Item.id == id).first_or_404()
 	db.session.delete(it)

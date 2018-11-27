@@ -1,7 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { logout } from "../actions/logoutActions"
 import path from "../../styles/images/navbrand.jpg"
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    this.props.logout()
+  }
+
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark">
@@ -15,7 +28,7 @@ class NavBar extends Component {
           </div>
 
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="#"><button className="btn btn-light">Logout</button></a></li>
+            <li><a href="#"><button className="btn btn-light" onClick={this.onSubmit}>Logout</button></a></li>
           </ul>
         </div>
       </nav>
@@ -23,4 +36,10 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => { dispatch(logout()) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NavBar)

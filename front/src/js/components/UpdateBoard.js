@@ -28,7 +28,7 @@ class UpdateBoard extends Component {
     })
   }
 
-  updateBoard(e) {
+  updateBoard() {
     this.props.updateBoard(this.props.id, this.state.title, this.state.image)
 
     this.setState({
@@ -41,7 +41,7 @@ class UpdateBoard extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="d-inline">
+        <div className="pl-1 d-inline">
           <button data-toggle="modal" data-target="#exampleModal" className="btn btn-dark btn-lg ">+</button>
         </div>
 

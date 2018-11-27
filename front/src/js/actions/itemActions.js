@@ -14,9 +14,9 @@ export function itemsReceived(items) {
   }
 }
 
-export function fetchItems() {
+export function fetchItems(boardId) {
   return (dispatch) => {
-    db.fetchItems()
+    db.fetchItems(boardId)
     .then((items) => {
       console.log('GOT_ITEMS')
       dispatch(itemsReceived(items))
@@ -60,9 +60,9 @@ export function addItem(id, title, boardId) {
   }
 }
 
-export function createItem(title, image) {
+export function createItem(title, boardId) {
   return (dispatch) => {
-    db.createItem(title, image)
+    db.createItem(title, boardId)
     .then((item) => {
       console.log('GOT_CREATE_ITEM')
       dispatch(addItem(item.id, item.title, item.board_id))

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import NavBar from "./NavBar"
 import ColumnsTask from "./ColumnsTask"
 import UpdateBoard from "./UpdateBoard"
+import TestDrag from "./TestDrag"
 import { connect } from "react-redux"
 import { fetchBoardById } from "../actions/boardActions"
 import "../../styles/dashboard.css"
@@ -32,9 +33,9 @@ class DashBoard extends Component {
               <div className="d-inline">
                 <h1 className="t-dashboard-title pl-4 pr-4">{this.props.boards.title}</h1>
               </div>
-            <UpdateBoard />
+              <UpdateBoard id={this.props.id}/>
             </div>
-            <ColumnsTask />
+            <ColumnsTask id={this.props.id}/>
           </div>
         </div>
       </React.Fragment>

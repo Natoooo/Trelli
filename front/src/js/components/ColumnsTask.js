@@ -13,16 +13,17 @@ class ColumnsTask extends Component {
 
   render() {
     const items = this.props.items.map((item, key) => {
-      return <div className="t-dashboard-item" key={key}><li className="list-group-item m-2">{item.title}</li> </div>
+      return <div className="t-dashboard-item" key={key}><li className="list-group-item m-2">{item.title}</li></div>
     })
     return (
-      <div className="row">
+      <div className="row ml-2">
         <div className="col-2 t-dashboard-columns p-0">
           <div className="font-weight-bold p-2">To Do</div>
             <ul className="list-group">{items}</ul>
         </div>
         <div className="col-2 t-dashboard-columns font-weight-bold p-2">In Progress</div>
         <div className="col-2 t-dashboard-columns font-weight-bold p-2">Done</div>
+        <div className="col-2 t-dashboard-columns font-weight-bold p-2">+Add A List</div>
         <div className="col-2 t-dashboard-columns font-weight-bold p-2">+Add A List</div>
       </div>
     )
